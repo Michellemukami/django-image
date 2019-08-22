@@ -1,0 +1,25 @@
+{%extends 'location/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{pixels.pixel_image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{pixels.title}}</h1>
+   </div>
+
+   <div class="row">
+     <p>{{pixels.post}}</p>
+   </div>
+
+   <div class="row">
+     <p>Posted {{pixel.pub_date|timesince}} </p>
+   </div>
+
+ </div>
+
+ {% endblock %}

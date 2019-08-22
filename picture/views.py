@@ -8,6 +8,8 @@ from django.shortcuts import render,redirect
 
 # Create your views here.
 def location(request):
+    date = dt.date.today()
+    pixels = Location.objects.get(name = name)
     return render(request, 'location.html')
 
 def mombasa(request,name):
