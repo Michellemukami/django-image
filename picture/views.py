@@ -7,37 +7,23 @@ from django.shortcuts import render,redirect
 
 
 # Create your views here.
-def welcome(request):
-    return render(request, 'welcome.html')
+def location(request):
+    return render(request, 'location.html')
 
-def news_today(request):
+def mombasa(request,name):
     date = dt.date.today()
-    news = Article.todays_news()
-    return render(request, 'all-news/todays-news.html', {"date": date,"news":news})
+    pixels = Location.objects.get(name = mombasa)
+    return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
 
-def article(request,article_id):
-    try:
-        article = Article.objects.get(id = article_id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"all-news/article.html", {"article":article})
-  
+def nakuru(request,name):
+    date = dt.date.today()
+    pixels = Location.objects.get(name = mombasa)
+    return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
 
-def past_days_news(request, past_date):
-    try:
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
-        raise Http404()
-        assert False
-
-    if date == dt.date.today():
-        return redirect(news_today)
-
-    news = Article.days_news(date)
-    return render(request, 'all-news/past-news.html',{"date": date,"news":news})
-    
+def kisii(request,name):
+    date = dt.date.today()
+    pixels = Location.objects.get(name = mombasa)
+    return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
 def search_results(request):
 
     if 'category' in request.GET and request.GET["category"]:
