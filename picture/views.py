@@ -9,22 +9,22 @@ from django.shortcuts import render,redirect
 # Create your views here.
 def location(request,):
     date = dt.date.today()
-    pixels = Location.location
+    pixels = Location.location()
     return render(request, 'pixel.html', {"date": date,"pixels":pixels})
 
-def mombasa(request,name):
+def mombasa(request):
     date = dt.date.today()
-    pixels = Location.objects.get(name = mombasa)
+    pixels = Image.mombasa()
     return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
 
-def nakuru(request,name):
+def nakuru(request):
     date = dt.date.today()
-    pixels = Location.objects.get(name = nakuru)
+    pixels = Image.nakuru()
     return render(request, 'location/nakuru.html', {"date": date,"pixels":pixels})
 
-def kisii(request,name):
+def kisii(request):
     date = dt.date.today()
-    pixels = Location.objects.get(name = kisii)
+    pixels = Image.kisii()
     return render(request, 'location/kisii.html', {"date": date,"pixels":pixels})
 def search_results(request):
 

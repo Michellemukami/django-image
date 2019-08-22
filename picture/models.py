@@ -18,14 +18,7 @@ class Location(models.Model):
 
     def __str__(self):
         return self.name
-    @classmethod
-    def location(cls,name):
-        today = dt.date.today()
-        pixels = cls.objects.filter(name = name)
-        return pixels
-
-  
-
+    
 class Image(models.Model):
     title = models.CharField(max_length =60)
     post = models.TextField()
@@ -38,4 +31,24 @@ class Image(models.Model):
     def search_by_category(cls,search_term):
         pixel = cls.objects.filter(category__icontains=search_term)
         return pixel
-        
+    @classmethod
+    def location(cls,name):
+        today = dt.date.today()
+        pixels = cls.objects.all()
+        return pixels
+    @classmethod
+    def mombasa(cls,mombasa):
+        today = dt.date.today()
+        pixels = cls.objects.filter(location__icontains = mombasa)
+        return pixels
+    @classmethod
+    def nakuru(cls,nakuru):
+        today = dt.date.today()
+        pixels = cls.objects.filter(location__icontains = nakuru)
+        return pixels
+    @classmethod
+    def kisii(cls,kisii):
+        today = dt.date.today()
+        pixels = cls.objects.filter(location__icontains = kisii)
+        return pixels
+             

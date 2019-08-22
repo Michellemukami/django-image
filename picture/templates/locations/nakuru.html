@@ -1,25 +1,38 @@
-{%extends 'locations/base.html'%}
+{%extends 'all-news/base.html'%}
+{% block content %} 
+{{ block.super}}
 
- {% block content %}
+<div class="container">
 
- <div class="container">
+  <!-- Looping through news   -->
+ 
+  
 
-   <div class="row">
-     <img src="{{pixels.pixel_image.url}}"  class="img-responsive" alt="">
-   </div>
+  {% for pixels_item in pixels %}
 
-   <div class="row">
-     <h1 class="text-center">{{pixels.category}}</h1>
-   </div>
+  <div class="row">
+    <!-- displaying News articles -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h2 class="text-center"> {{ pixels_item.category }} </h2>
+    </div>
 
-   <div class="row">
-     <p>{{pixels.post}}</p>
-   </div>
+    <!--Display news Article images  -->
+    
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        {% if pixels_item.Pixels_image %}
+        <img src="{{news_item.Pixels_image.url}}" class="img-responsive" alt="Image">
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There No News Items</h2>
+  </div>
+  {% endfor %}
 
-   <div class="row">
-     <p>Posted {{pixels.pub_date|timesince}} </p>
-   </div>
+</div>
 
- </div>
 
- {% endblock %}
+{% endblock %}
