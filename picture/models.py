@@ -19,7 +19,7 @@ class Location(models.Model):
     def __str__(self):
         return self.name
     @classmethod
-    def new_location(cls):
+    def location(cls):
         today = dt.date.today()
         pixels = cls.objects.filter(name = name)
         return pixels
@@ -38,3 +38,4 @@ class Image(models.Model):
     def search_by_category(cls,search_term):
         pixel = cls.objects.filter(category__icontains=search_term)
         return pixel
+        
