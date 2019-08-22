@@ -7,10 +7,10 @@ from django.shortcuts import render,redirect
 
 
 # Create your views here.
-def location(request):
+def location(request,):
     date = dt.date.today()
-    pixels = Location.objects.get(name = name)
-    return render(request, 'location.html')
+    pixels = Location.location
+    return render(request, 'pixel.html', {"date": date,"pixels":pixels})
 
 def mombasa(request,name):
     date = dt.date.today()
@@ -37,5 +37,5 @@ def search_results(request):
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all-news/search.html',{"message":message})
+        return render(request, 'locations/search.html',{"message":message})
 

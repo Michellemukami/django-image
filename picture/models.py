@@ -8,8 +8,8 @@ class Category(models.Model):
     name = models.CharField(max_length =30)
 
     def __str__(self):
-        return self.first_name
-    def save_editor(self):
+        return self.name
+    def save_Category(self):
         self.save()
    
 
@@ -19,7 +19,7 @@ class Location(models.Model):
     def __str__(self):
         return self.name
     @classmethod
-    def location(cls):
+    def location(cls,name):
         today = dt.date.today()
         pixels = cls.objects.filter(name = name)
         return pixels
