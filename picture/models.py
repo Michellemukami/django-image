@@ -11,8 +11,7 @@ class Category(models.Model):
         return self.first_name
     def save_editor(self):
         self.save()
-    class Meta:
-        ordering = ['first_name']
+   
 
 class Location(models.Model):
     name = models.CharField(max_length =30)

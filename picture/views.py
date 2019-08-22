@@ -2,7 +2,7 @@
 
 import datetime as dt
 from django.http  import HttpResponse,Http404
-from .models import Article
+from .models import Location,Category,Location
 from django.shortcuts import render,redirect
 
 
