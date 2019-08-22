@@ -30,4 +30,4 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         pixel = cls.objects.filter(category__icontains=search_term)
-        return news
+        return pixel
