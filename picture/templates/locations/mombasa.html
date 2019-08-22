@@ -1,23 +1,23 @@
-{%extends 'all-news/base.html'%}
+{%extends 'locations/base.html'%}
 
  {% block content %}
 
  <div class="container">
 
    <div class="row">
-     <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
+     <img src="{{pixels.pixel_image.url}}"  class="img-responsive" alt="">
    </div>
 
    <div class="row">
-     <h1 class="text-center">{{article.title}}</h1>
+     <h1 class="text-center">{{pixels.category}}</h1>
    </div>
 
    <div class="row">
-     <p>{{article.post}}</p>
+     <p>{{pixels.post}}</p>
    </div>
 
    <div class="row">
-     <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
+     <p>Posted {{pixels.pub_date|timesince}} </p>
    </div>
 
  </div>

@@ -17,13 +17,13 @@ def mombasa(request,name):
 
 def nakuru(request,name):
     date = dt.date.today()
-    pixels = Location.objects.get(name = mombasa)
-    return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
+    pixels = Location.objects.get(name = nakuru)
+    return render(request, 'location/nakuru.html', {"date": date,"pixels":pixels})
 
 def kisii(request,name):
     date = dt.date.today()
-    pixels = Location.objects.get(name = mombasa)
-    return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
+    pixels = Location.objects.get(name = kisii)
+    return render(request, 'location/kisii.html', {"date": date,"pixels":pixels})
 def search_results(request):
 
     if 'category' in request.GET and request.GET["category"]:
