@@ -112,19 +112,19 @@ span.psw {
 
 <div class = "container">
   {%if pixels%}
-  {% for pixels_item in pixels %}
+  {% for pixels in pixels %}
 
   <div class="row">
     <!-- displaying News articles -->
     
-      <div class="jumbotron"> {{ pixels_item.category }} </div>
+      <div class="jumbotron"> {{ pixels.category }} </div>
     </div>
 
 <div class="row">
     <!--Display news Article images  -->
     
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        {% if pixels_item.Pixels_image %}
+        {% if pixels.Pixels_image %}
 
 <img onclick="document.getElementById('id01').style.display='block'" style="width:auto;" src="{{pixels_item.Pixels_image.url}}" class="img-responsive" alt="Image">
 {% endif %}
@@ -142,21 +142,21 @@ span.psw {
   <form class="modal-content animate" action="/action_page.php">
     <div class="imgcontainer">
      {%if pixels%}
-      {% for pixels_item in pixels %}
+      {% for pixels in pixels %}
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <div class="row">
     <!-- displaying News articles -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    Category:  <h2 class="text-center"> {{ pixels_item.category }} </h2>
-     Title: <h2 class="text-center"> {{ pixels_item.title }} </h2>
-      Post:<h2 class="text-center"> {{ pixels_item.post }} </h2>
-     Date posted: <h2 class="text-center"> {{ pixels_item.pub_date }} </h2>
+    Category:  <h2 class="text-center"> {{ pixels.category }} </h2>
+     Title: <h2 class="text-center"> {{ pixels.title }} </h2>
+      Post:<h2 class="text-center"> {{ pixels.post }} </h2>
+     Date posted: <h2 class="text-center"> {{ pixels.pub_date }} </h2>
     </div>
 
     <!--Display news Article images  -->
     
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        {% if pixels_item.Pixels_image %}
+        {% if pixels.Pixels_image %}
         <img src="{{pixels_item.Pixels_image.url}}" class="img-responsive" alt="Image" >
         {% endif %}
       </div>
