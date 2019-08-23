@@ -11,6 +11,10 @@ class Category(models.Model):
         return self.name
     def save_Category(self):
         self.save()
+    @classmethod
+    def search_by_category(cls,search_term):
+        pixels = cls.objects.filter(category__icontains=search_term)
+        return pixels
    
 
 class Location(models.Model):
@@ -28,27 +32,7 @@ class Image(models.Model):
     Pixels_image = models.ImageField(upload_to = 'pixels/', blank=True)
    
     @classmethod
-    def search_by_category(cls,search_term):
-        pixels = cls.objects.filter(category__icontains=search_term)
-        return pixels
-    @classmethod
     def location(cls):
-        today = dt.date.today()
         pixels = cls.objects.all()
         return pixels
-    @classmethod
-    def mombasa(cls,mombasa):
-        today = dt.date.today()
-        pixels = cls.objects.filter(location__icontains = 'mombasa')
-        return pixels
-    @classmethod
-    def nakuru(cls,nakuru):
-        today = dt.date.today()
-        pixels = cls.objects.filter(location__icontains = 'nakuru')
-        return pixels
-    @classmethod
-    def kisii(cls,kisii):
-        today = dt.date.today()
-        pixels = cls.objects.filter(location__icontains = 'kisii')
-        return pixels
-             
+   
