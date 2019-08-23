@@ -1,9 +1,9 @@
 #Pixels
 A python application based on Django framework, 2019
-Michelle Mukami
+####Michelle Mukami
 ##Description
 
-This is a personal gallery application that enables me to post images for other users to see. A user can click on an image to view it's details and search in my application for images based on categories.
+This is a personal gallery application that enables me as the admin to post images for other users to see. A user can click on an image to view it's details and search in my application for images based on categories.
 ## Cloning and running
 Clone the application using git clone(this copies the app onto your device). In your terminal:
 
