@@ -29,26 +29,26 @@ class Image(models.Model):
    
     @classmethod
     def search_by_category(cls,search_term):
-        pixel = cls.objects.filter(category__icontains=search_term)
-        return pixel
+        pixels = cls.objects.filter(category__icontains=search_term)
+        return pixels
     @classmethod
-    def location(cls,name):
+    def location(cls):
         today = dt.date.today()
         pixels = cls.objects.all()
         return pixels
     @classmethod
     def mombasa(cls,mombasa):
         today = dt.date.today()
-        pixels = cls.objects.filter(location__icontains = mombasa)
+        pixels = cls.objects.filter(location__icontains = 'mombasa')
         return pixels
     @classmethod
     def nakuru(cls,nakuru):
         today = dt.date.today()
-        pixels = cls.objects.filter(location__icontains = nakuru)
+        pixels = cls.objects.filter(location__icontains = 'nakuru')
         return pixels
     @classmethod
     def kisii(cls,kisii):
         today = dt.date.today()
-        pixels = cls.objects.filter(location__icontains = kisii)
+        pixels = cls.objects.filter(location__icontains = 'kisii')
         return pixels
              

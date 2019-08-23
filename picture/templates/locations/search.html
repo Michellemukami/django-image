@@ -14,9 +14,9 @@
   <div class="row">
 
   {% if pixels %}
-    {% for pixel in pixels %}
+    {% for pixels in pixels %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{pixel.title}}</h1>
+          <h1>{{pixels.category}}</h1>
           
       </div>
     {% endfor %}

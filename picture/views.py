@@ -2,14 +2,14 @@
 
 import datetime as dt
 from django.http  import HttpResponse,Http404
-from .models import Location,Category,Location
+from .models import Location,Category,Image
 from django.shortcuts import render,redirect
 
 
 # Create your views here.
 def location(request,):
     date = dt.date.today()
-    pixels = Location.location()
+    pixels = Image.location()
     return render(request, 'pixel.html', {"date": date,"pixels":pixels})
 
 def mombasa(request):
@@ -30,7 +30,7 @@ def search_results(request):
 
     if 'category' in request.GET and request.GET["category"]:
         search_term = request.GET.get("category")
-        searched_category = Pixel.search_by_category(search_term)
+        searched_category = Image.search_by_category(search_term)
         message = f"{search_term}"
 
         return render(request, 'locations/search.html',{"message":message,"pixel": searched_category})
