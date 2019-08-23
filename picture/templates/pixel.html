@@ -9,29 +9,10 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
 
 /* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
 
-button:hover {
-  opacity: 0.8;
-}
+
 
 /* Extra styles for the cancel button */
 .cancelbtn {
@@ -42,19 +23,16 @@ button:hover {
 
 /* Center the image and position the close button */
 .imgcontainer {
-  text-align: center;
+  text-align: left;
   margin: 24px 0 12px 0;
   position: relative;
 }
 
-img.avatar {
+img{
   width: 40%;
-  border-radius: 50%;
+  border-radius: 25px;
 }
 
-.container {
-  padding: 16px;
-}
 
 span.psw {
   float: right;
@@ -132,31 +110,32 @@ span.psw {
 
 <h2>Picture are a piece of memory</h2>
 {% for pixels_item in pixels %}
-
+<div class="container">
   <div class="row">
     <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ pixels_item.category }} </h2>
-    </div>
-
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h2 class="text-center"> {{ pixels_item.title }} </h2>
+  
     <!--Display news Article images  -->
     
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         {% if pixels_item.Pixels_image %}
 <img src="{{pixels_item.Pixels_image.url}}" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
 {% endif %}
-      </div>
+      
   
-    </div>
-  </div>
+  
+
   {% empty %}
   <div class="row">
     <h2 class="text-center">There No News Items</h2>
   </div>
   {% endfor %}
+    </div>
+  </div>
+</div>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <div class="modal-content animate" >
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
      
@@ -164,33 +143,37 @@ span.psw {
 
 
         {% for pixels_item in pixels %}
+
+        {% if pixels_item.Pixels_image %}
+<img src="{{pixels_item.Pixels_image.url}}" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+{% endif %}
+<br>
+<label for=""><b>Image Category:</b></label>
       <h2 class="text-center"> {{ pixels_item.category }} </h2>
+      <label for=""><b>Image Title:</b></label>
       <h2 class="text-center"> {{ pixels_item.title }} </h2>
-     
+      <label for=""><b>Image Post:</b></label>
       <h2 class="text-center"> {{ pixels_item.post }} </h2>
+      <label for=""><b>Image Location:</b></label>
       <h2 class="text-center"> {{ pixels_item.Location}} </h2>
+      <label for=""><b>Image Date posted:</b></label>
       <h2 class="text-center"> {{ pixels_item.pub_date }} </h2>
     </div>
 
     <!--Display news Article images  -->
-    
-        {% if pixels_item.Pixels_image %}
-<img src="{{pixels_item.Pixels_image.url}}" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
-{% endif %}
-      </div>
-    </div>
-  </div>   
+
+   
+   
     {% empty %}
-    <div class="row">
+    
       <h2 class="text-center">There No News Items</h2>
     </div>
     {% endfor %}
     <div class="container" style="background-color:#f1f1f1">
-      
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
-  </form>
 </div>
-
+</div>
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
