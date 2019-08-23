@@ -14,18 +14,18 @@ def location(request,):
 
 def mombasa(request):
     date = dt.date.today()
-    pixels = Image.mombasa()
-    return render(request, 'location/mombasa.html', {"date": date,"pixels":pixels})
+    pixels = Image.objects.filter(Location=3)
+    return render(request, 'locations/mombasa.html', {"date": date,"pixels":pixels})
 
 def nakuru(request):
     date = dt.date.today()
-    pixels = Image.nakuru()
-    return render(request, 'location/nakuru.html', {"date": date,"pixels":pixels})
+    pixels = Image.objects.filter(Location=1)
+    return render(request, 'locations/nakuru.html', {"date": date,"pixels":pixels})
 
 def kisii(request):
     date = dt.date.today()
-    pixels = Image.kisii()
-    return render(request, 'location/kisii.html', {"date": date,"pixels":pixels})
+    pixels = Image.objects.filter(Location=2)
+    return render(request, 'locations/kisii.html', {"date": date,"pixels":pixels})
 def search_results(request):
 
     if 'category' in request.GET and request.GET["category"]:
