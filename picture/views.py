@@ -32,7 +32,7 @@ def search_results(request):
         searched_images=Image.search_by_cat(search_term)
         message = f"{search_term}"
 
-        return render(request, 'locations/search.html',{"message":message, "pixels": searched_images})
+        return render(request, 'locations/search.html',{"message":message, "images": searched_images})
     else:
         message="Type in a category to search"
         return render(request, 'locations/search.html',{"message":message})

@@ -23,7 +23,8 @@ function copylink(value) {
 <style>
   body{
   color: black;
-  font-family:'Ubuntu', cursive;
+  font-family:'Kaushan Script';
+
 }
 
 /* *{
@@ -76,7 +77,8 @@ function copylink(value) {
   background-size:  cover;
   color: white;
   font-size: 3.9em;
-  font-family: 'Cookie', cursive;
+  font-family: 'Cookie' ,cursive;
+  font-style: italic;
 
 }
 
@@ -95,7 +97,7 @@ function copylink(value) {
 
 
   .galleria{
-    color: yellow;
+    color: black;
     font-weight: lighter;
     font-size: 70px;
 
@@ -108,7 +110,7 @@ function copylink(value) {
 }
 
 nav a{
-  color: yellow;
+  color:black;
 }
 </style>
 
@@ -117,7 +119,7 @@ nav a{
     <div class="row"style="padding:0 4px;">
     {% for pixels_item in pixels %}
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"style="padding:0 4px;flex-wrap: wrap;">
-      <img style="width:50%; border-radius:25px " src="{{pixels_item.Pixels_image.url}}" alt="images" data-toggle="modal" data-target="#{{pixels_item.title}}">
+      <img style="width:90%; border-radius:25px " src="{{pixels_item.Pixels_image.url}}" alt="images" data-toggle="modal" data-target="#{{pixels_item.title}}">
     
       <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"style="padding:0 4px;flex: 25%;">
     
@@ -138,7 +140,10 @@ nav a{
               </div>
               <div class="modal-body">
                   
-              <img style="width:70%;   border-radius: 50%;"src="{{pixels_item.Pixels_image.url}}" alt="check"><br>
+              <img style="width:60%;   display: block;
+              margin-left: auto;
+              margin-right: auto;
+              border-radius: 50%;"src="{{pixels_item.Pixels_image.url}}" alt="check"><br>
                   <h4>Time taken</h4><br>
                   <p>{{pixels_item.pub_date}}</p><br>
                 <hr>
@@ -148,6 +153,8 @@ nav a{
                 <h4>Location</h4><br>
                 <p>Snapped in {{pixels_item.Location}}</p><br>
                 <hr>
+                <input type="text" name="" value="" placeholder="{{pixels_item.Pixels_image.url}}" class="text-muted">
+                <button type="button" name="button" class="btn btn-dark" value="{{pixels_item.Pixels_image.url}}" onclick="copylink(this.value)">Copy Image Link</button>
                 <img style="height:200px; width:200px;" src="https://i.pinimg.com/originals/f3/41/da/f341dae99469234d6d6a835ea678a864.gif" alt="check"><br>
               </div><br><br>
             </div>

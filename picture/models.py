@@ -33,5 +33,5 @@ class Image(models.Model):
         return pixels
     @classmethod
     def search_by_cat(cls, search_term):
-        pixels=cls.objects.filter(category__icontains=search_term)
-        return pixels
+        images=cls.objects.filter(category__icontains=search_term)
+        return images

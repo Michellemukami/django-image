@@ -3,7 +3,7 @@
 <div class="container">
 
   <div class="row">
-    {% if pixels%}
+    {% if images%}
       <h2>Found {{ images|length }} results in category '{{message}}'</h2>
     {% else %}
       <h2> Found 0 images for the search term {{message}}</h2>
@@ -11,31 +11,30 @@
 
   </div>
 
-  <div class=" row row_image">
+  <div class="row_image">
 
 
-    {% for article in pixels %}
+    {% for image in images %}
 
     <div class="test column_image all_images">
-      <img style="width:100%" src="{{article.Pixels_image.ur}}" alt="images" data-toggle="modal" data-target="#{{article.image_name}}">
+      <img style="width:100%" src="{{image.Pixel_url}}" alt="images" data-toggle="modal" data-target="#{{image.title}}">
 
-      <div id="{{article.image.title}}" class="modal fade bd-example-modal-xl p-4" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+      <div id="{{.image.title}}" class="modal fade bd-example-modal-xl p-4" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="">
-              <h3 class="text-center">{{article.image.title}}</h3>
-              <img width="100%"src="{{article.image.url}}" alt="check"><br>
+              <h3 class="text-center">{{image.title}}</h3>
+              <img width="100%"src="{{image.Pixel_url}}" alt="check"><br>
               <br><div class="details container">
-                <button type="button" class="btn btn-outline-info" name="button">{{article.image.category}}</button>
+                <button type="button" class="btn btn-outline-info" name="button">{{image.category}}</button>
                 <hr>
                 <h4>Image Description</h4>
-                <p>{{article.image.post}}</p>
+                <p>{{image.post}}</p>
                 <hr>
                 <h4>Location</h4>
-                <p>Snapped in {{article.image.location}}</p>
+                <p>Snapped in {{image.Location}}</p>
                 <hr>
-                <input type="text" name="" value="" placeholder="{{article.image}}" class="text-muted">
-                <button type="button" name="button" class="btn btn-info" value="" onclick="copylink(this.value)">Copy Image Link</button>
+               
               </div><br><br>
             </div>
           </div>
