@@ -1,7 +1,7 @@
-#Pixels
+# Pixels
 A python application based on Django framework, 2019
-####Michelle Mukami
-##Description
+#### Michelle Mukami
+## Description
 
 This is a personal gallery application that enables me as the admin to post images for other users to see. A user can click on an image to view it's details and search in my application for images based on categories.
 ## Cloning and running
@@ -24,11 +24,11 @@ Clone the application using git clone(this copies the app onto your device). In 
 ## Testing the Application
 To run the tests for the class file:
 
-##Known Bugs
+## Known Bugs
 
 NO known Bugs.
 
-##Behavior Driven Development
+## Behavior Driven Development
 
 | Behaviour    | Input     | Output|
 | :------------- | :------------- |:---------|
@@ -38,8 +38,8 @@ NO known Bugs.
 |Show image as per location |Click Location on nav-bar|Display filtered images as [per location|
 
 
-##Technologies Used
-###main languages used are
+## Technologies Used
+### main languages used are
 
 * Python
 * Bootstrap
