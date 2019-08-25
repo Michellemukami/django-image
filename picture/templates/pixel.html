@@ -1,193 +1,162 @@
 {%extends 'locations/base.html'%}
 {% block content %} 
 {{ block.super}}
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
 
-/* Full-width input fields */
+<div class="head bg-warning">
+  <p class='text-center galleria'>Pixels</p>
 
-/* Set a style for all buttons */
-
-
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: left;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-img{
-  width: 40%;
-  border-radius: 25px;
-}
-
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-</head>
-<body>
-
-<h2>Picture are a piece of memory</h2>
-{% for pixels_item in pixels %}
-<div class="container">
-  <div class="row">
-    <!-- displaying News articles -->
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h2 class="text-center"> {{ pixels_item.title }} </h2>
-  
-    <!--Display news Article images  -->
-    
-        {% if pixels_item.Pixels_image %}
-<img src="{{pixels_item.Pixels_image.url}}" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
-{% endif %}
-      
-  
-  
-
-  {% empty %}
-  <div class="row">
-    <h2 class="text-center">There No News Items</h2>
-  </div>
-  {% endfor %}
-    </div>
-  </div>
 </div>
-<div id="id01" class="modal">
-  
-  <div class="modal-content animate" >
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-     
 
-
-
-        {% for pixels_item in pixels %}
-
-        {% if pixels_item.Pixels_image %}
-<img src="{{pixels_item.Pixels_image.url}}" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
-{% endif %}
-<br>
-<label for=""><b>Image Category:</b></label>
-      <h2 class="text-center"> {{ pixels_item.category }} </h2>
-      <label for=""><b>Image Title:</b></label>
-      <h2 class="text-center"> {{ pixels_item.title }} </h2>
-      <label for=""><b>Image Post:</b></label>
-      <h2 class="text-center"> {{ pixels_item.post }} </h2>
-      <label for=""><b>Image Location:</b></label>
-      <h2 class="text-center"> {{ pixels_item.Location}} </h2>
-      <label for=""><b>Image Date posted:</b></label>
-      <h2 class="text-center"> {{ pixels_item.pub_date }} </h2>
-    </div>
-
-    <!--Display news Article images  -->
-
-   
-   
-    {% empty %}
-    
-      <h2 class="text-center">There No News Items</h2>
-    </div>
-    {% endfor %}
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
-</div>
-</div>
+<!-- script tags come in here -->
 <script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+function copylink(value) {
+  function handler(event){
+      event.clipboardData.setData('text/plain', value);
+      event.preventDefault();
+      document.removeEventListener('copy', handler, true);
+  }
+  document.addEventListener('copy', handler, true);
+  document.execCommand('copy');
 }
 </script>
+<!-- and ends here -->
+<style>
+  body{
+  color: black;
+  font-family:'Ubuntu', cursive;
+}
 
-</body>
-</html>
+/* *{
+  box-sizing: border-box;
+} */
 
-    {%endblock%}
-  
+.row_image{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column_image{
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column_image img{
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.head{
+  background-image: url('https://i.pinimg.com/originals/3b/75/7b/3b757bce746fac265dc8772f6576d3a3.gif');
+  background-repeat: no-repeat;
+  background-size:  cover;
+  color: white;
+  font-size: 3.9em;
+  font-family: 'Cookie', cursive;
+
+}
+
+.head p{
+  background-color: rgba(0,0,0,0.5)
+}
+.galleria{
+  font-size: 4.1em;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+@media screen and (max-width: 800px){
+  .column_image{
+    flex: 50%;
+    max-width: 50%;
+  }
+
+
+}
+
+@media screen and (max-width: 700px){
+  .column_image{
+    flex: 100%;
+    max-width: 100%;
+
+  }
+}
+
+/* media query for text */
+@media screen and (max-width: 900px){
+
+
+  .galleria{
+    color: yellow;
+    font-weight: lighter;
+    font-size: 70px;
+
+  }
+
+}
+.modal-content{
+  margin: 20%;
+  border: 12%;
+}
+
+nav a{
+  color: yellow;
+}
+</style>
+
+  <div class="container-fluid">
+    <!-- loop through images in database -->
+    <div class="row_image">
+    {% for pixels_item in pixels %}
+
+    <div class="test column_image all_images">
+      <img style="width:100%; border-radius:25px " src="{{pixels_item.Pixels_image.url}}" alt="images" data-toggle="modal" data-target="#{{pixels_item.title}}">
+
+      <div id="{{pixels_item.title}}" class="modal fade bd-example-modal-xl p-4" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="">
+              <h3 class="text-center">{{ pixels_item.title }}</h3>
+              <img style="width:100%;   border-radius: 50%;"src="{{pixels_item.Pixels_image.url}}" alt="check"><br>
+              <br><div class="details container">
+                <button type="button" class="btn btn-outline-info" name="button">{{pixels_item.category}}</button>
+                <hr>
+                <h4>Image Description</h4><br>
+                <p>{{pixels_item.post}}</p><br>
+                <hr>
+                <h4>Location</h4><br>
+                <p>Snapped in {{pixels_item.Location}}</p><br>
+                <hr>
+                <img style="width:100%;   border-radius: 50%;"src="https://i.pinimg.com/originals/f3/41/da/f341dae99469234d6d6a835ea678a864.gif" alt="check"><br>
+              </div><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- <div class="column_image all_images">
+        <img style="width:100%" src="{{image.image.url}}" alt="images" data-toggle="modal" data-target=".bd-example-modal-xl">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              {{image.image_name}}
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+  {%empty%}
+  <div class="row">
+    <div class="col-md-12 nuttnhere">
+      <h1>Nothing here yet! Give us a while...</h1>
+    </div>
+
+  </div>
+  {%  endfor %}
+  </div>
+  </div>
+  {%endblock%}

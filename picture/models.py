@@ -11,11 +11,7 @@ class Category(models.Model):
         return self.name
     def save_Category(self):
         self.save()
-    @classmethod
-    def search_by_category(cls,search_term):
-        pixels = cls.objects.filter(category__icontains=search_term)
-        return pixels
-   
+    
 
 class Location(models.Model):
     name = models.CharField(max_length =30)
@@ -35,4 +31,7 @@ class Image(models.Model):
     def location(cls):
         pixels = cls.objects.all()
         return pixels
-   
+    @classmethod
+    def search_by_cat(cls, search_term):
+        pixels=cls.objects.filter(category__icontains=search_term)
+        return pixels

@@ -1,26 +1,50 @@
-{%extends 'locations/base.html'%} 
+{%extends 'locations/base.html'%}
 {% block content %}
 <div class="container">
 
   <div class="row">
     {% if pixels%}
-      <h2>Found {{ pixels|length }} of searched term {{message}}</h2>
+      <h2>Found {{ images|length }} results in category '{{message}}'</h2>
     {% else %}
-      <h2> Found 0 pixels for the search term {{message}}</h2>
+      <h2> Found 0 images for the search term {{message}}</h2>
     {% endif %}
 
   </div>
 
-  <div class="row">
+  <div class=" row row_image">
 
-  {% if pixels %}
-    {% for pixels in pixels %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{pixels.category}}</h1>
-          
+
+    {% for article in pixels %}
+
+    <div class="test column_image all_images">
+      <img style="width:100%" src="{{article.Pixels_image.ur}}" alt="images" data-toggle="modal" data-target="#{{article.image_name}}">
+
+      <div id="{{article.image.title}}" class="modal fade bd-example-modal-xl p-4" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="">
+              <h3 class="text-center">{{article.image.title}}</h3>
+              <img width="100%"src="{{article.image.url}}" alt="check"><br>
+              <br><div class="details container">
+                <button type="button" class="btn btn-outline-info" name="button">{{article.image.category}}</button>
+                <hr>
+                <h4>Image Description</h4>
+                <p>{{article.image.post}}</p>
+                <hr>
+                <h4>Location</h4>
+                <p>Snapped in {{article.image.location}}</p>
+                <hr>
+                <input type="text" name="" value="" placeholder="{{article.image}}" class="text-muted">
+                <button type="button" name="button" class="btn btn-info" value="" onclick="copylink(this.value)">Copy Image Link</button>
+              </div><br><br>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
     {% endfor %}
-  {% endif %}
+
   </div>
 </div>
 {% endblock %}

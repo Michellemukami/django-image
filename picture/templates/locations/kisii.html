@@ -2,37 +2,161 @@
 {% block content %} 
 {{ block.super}}
 
-<div class="container">
-
-  <!-- Looping through news   -->
- 
-  
-
-  {% for pixels_item in pixels %}
-
-  <div class="row">
-    <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ pixels_item.category }} </h2>
-    </div>
-
-    <!--Display news Article images  -->
-    
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        {% if pixels_item.Pixels_image %}
-        <img src="{{pixels_item.Pixels_image.url}}" class="img-responsive" alt="Image">
-        {% endif %}
-      </div>
-  
-    </div>
-  </div>
-  {% empty %}
-  <div class="row">
-    <h2 class="text-center">There No News Items</h2>
-  </div>
-  {% endfor %}
+<div class="head bg-warning">
+  <p class='text-center galleria'>Pixels</p>
 
 </div>
 
+<!-- script tags come in here -->
+<script>
+function copylink(value) {
+  function handler(event){
+      event.clipboardData.setData('text/plain', value);
+      event.preventDefault();
+      document.removeEventListener('copy', handler, true);
+  }
+  document.addEventListener('copy', handler, true);
+  document.execCommand('copy');
+}
+</script>
+<!-- and ends here -->
+<style>
+  body{
+  color: black;
+  font-family:'Ubuntu', cursive;
+}
 
-{% endblock %}
+/* *{
+  box-sizing: border-box;
+} */
+
+.row_image{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column_image{
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column_image img{
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.head{
+  background-image: url('https://i.pinimg.com/originals/3b/75/7b/3b757bce746fac265dc8772f6576d3a3.gif');
+  background-repeat: no-repeat;
+  background-size:  cover;
+  color: white;
+  font-size: 3.9em;
+  font-family: 'Cookie', cursive;
+
+}
+
+.head p{
+  background-color: rgba(0,0,0,0.5)
+}
+.galleria{
+  font-size: 4.1em;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+@media screen and (max-width: 800px){
+  .column_image{
+    flex: 50%;
+    max-width: 50%;
+  }
+
+
+}
+
+@media screen and (max-width: 700px){
+  .column_image{
+    flex: 100%;
+    max-width: 100%;
+
+  }
+}
+
+/* media query for text */
+@media screen and (max-width: 900px){
+
+
+  .galleria{
+    color: yellow;
+    font-weight: lighter;
+    font-size: 70px;
+
+  }
+
+}
+.modal-content{
+  margin: 20%;
+  border: 12%;
+}
+
+nav a{
+  color: yellow;
+}
+</style>
+
+  <div class="container-fluid">
+    <!-- loop through images in database -->
+    <div class="row_image">
+    {% for pixels_item in pixels %}
+
+    <div class="test column_image all_images">
+      <img style="width:100%; border-radius:25px " src="{{pixels_item.Pixels_image.url}}" alt="images" data-toggle="modal" data-target="#{{pixels_item.title}}">
+
+      <div id="{{pixels_item.title}}" class="modal fade bd-example-modal-xl p-4" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="">
+              <h3 class="text-center">{{ pixels_item.title }}</h3>
+              <img width="100%"src="{{pixels_item.Pixels_image.url}}" alt="check"><br>
+              <br><div class="details container">
+                <button type="button" class="btn btn-outline-info" name="button">{{pixels_item.category}}</button>
+                <hr>
+                <h4>Image Description</h4>
+                <p>{{pixels_item.post}}</p>
+                <hr>
+                <h4>Location</h4>
+                <p>Snapped in {{pixels_item.location}}</p>
+                <hr>
+                
+              </div><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- <div class="column_image all_images">
+        <img style="width:100%" src="{{image.image.url}}" alt="images" data-toggle="modal" data-target=".bd-example-modal-xl">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              {{image.image_name}}
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+  {%empty%}
+  <div class="row">
+    <div class="col-md-12 nuttnhere">
+      <h1>Nothing here yet! Give us a while...</h1>
+    </div>
+
+  </div>
+  {%  endfor %}
+  </div>
+  </div>
+  {%endblock%}
