@@ -30,21 +30,44 @@ function copylink(value) {
   box-sizing: border-box;
 } */
 
-.row_image{
+.row {
+  display: -ms-flexbox; /* IE10 */
   display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
   padding: 0 4px;
 }
 
-.column_image{
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
   flex: 25%;
   max-width: 25%;
   padding: 0 4px;
 }
 
-.column_image img{
+.column img {
   margin-top: 8px;
   vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
 }
 
 .head{
@@ -66,22 +89,6 @@ function copylink(value) {
 }
 
 
-@media screen and (max-width: 800px){
-  .column_image{
-    flex: 50%;
-    max-width: 50%;
-  }
-
-
-}
-
-@media screen and (max-width: 700px){
-  .column_image{
-    flex: 100%;
-    max-width: 100%;
-
-  }
-}
 
 /* media query for text */
 @media screen and (max-width: 900px){
@@ -106,12 +113,17 @@ nav a{
 </style>
 
   <div class="container-fluid">
-    <!-- loop through images in database -->
-    <div class="row_image">
+    
+    <div class="row"style="padding:0 4px;">
     {% for pixels_item in pixels %}
-
-    <div class="test column_image all_images">
-      <img style="width:100%; border-radius:25px " src="{{pixels_item.Pixels_image.url}}" alt="images" data-toggle="modal" data-target="#{{pixels_item.title}}">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"style="padding:0 4px;flex-wrap: wrap;">
+      <img style="width:50%; border-radius:25px " src="{{pixels_item.Pixels_image.url}}" alt="images" data-toggle="modal" data-target="#{{pixels_item.title}}">
+    
+      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"style="padding:0 4px;flex: 25%;">
+    
+      </div>
+    </div>
+  </div>
 
       <div id="{{pixels_item.title}}" class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         
@@ -125,9 +137,7 @@ nav a{
                 </button>
               </div>
               <div class="modal-body">
-                  <div class="container-fluid">
-                      <div class="row">
-                          <div class="col-md-12">
+                  
               <img style="width:70%;   border-radius: 50%;"src="{{pixels_item.Pixels_image.url}}" alt="check"><br>
                   <h4>Time taken</h4><br>
                   <p>{{pixels_item.pub_date}}</p><br>
@@ -144,14 +154,10 @@ nav a{
           </div>
           </div>
         </div>
-          </div>
         </div>
       </div>
-    </div>
-
-
-  
-
+   
+      
   {%empty%}
   <div class="row">
     <div class="col-md-12 nuttnhere">
